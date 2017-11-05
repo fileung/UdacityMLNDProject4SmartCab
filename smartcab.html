@@ -11898,8 +11898,9 @@ For the feedback message green/red color:<br/>
   green is positive number reward<br/>
   red is negative number reward<br/></p>
 <p>For traffic light green/red color:<br/>
-  sometimes the agent get a red negative reward, sometimes a green positive reward, seems random at this point.<br>
-  the color of the traffic light does not equal to a fixed red or green reward.</p>
+  <span style='background-color:yellow'>(Correction on reviewer request)<br/></span>
+  When the traffic light is red and the car agent is stationary, the reward is positive.<br/>
+  When the traffic light is green and the car agent is stationary, the reward is negative.<br/></p>
 
 </div>
 </div>
@@ -16399,7 +16400,8 @@ but i am unsure why the other 3 decay functions are not as effective.<br/></p>
 There were about 3100 training trials.<br/></p>
 <p><strong>What epsilon-tolerance and alpha (learning rate) did you use? Why did you use them?</strong><br/>
 I have tried many combinations of epsilon, tolerance and alpha, the first set of these 'hyperparameters' combination reached A+ or A ratings is the set i submited in this project, I assume it is not neccessary to re-adjust to improve it further. <br/>
-The learning rate alpha set to be very low to maximum learning, and tolerance to be very low to increase number of trials.</p>
+<span style='background-color:yellow'>(Correction on reviewer request)<br/></span>
+The learning rate alpha set to be very low to make very small adjustment on QValue per trial.<br/> The tolerance set to be very low to increase number of trials.</p>
 <p><strong>How much improvement was made with this Q-Learner when compared to the default Q-Learner from the previous section?</strong><br/>
 The rating of Safety has improved from F to A+<br/>
 The rating of Reliability has improved from F to A<br/></p>
@@ -16541,6 +16543,8 @@ In the policy, if most states (but not all) are optimized, the program can still
 <p>The traffic light probably cannot be included in the traffic information as its unrealstic to know what the traffic light going to be just several roads ahead, or can it!?</p>
 <p>The simulation currently only see what's round the corner, one step only, therefore smartcab only take one planned action and take one reward and not further rewards.</p>
 <p>To go even further, the environment could predict other cars future position at a particular time, based on all the cars planned route actions if they also are a smartcab.</p>
+<p><span style='background-color:yellow'>(Write more on reviewer request)<br/></span></p>
+<p>In this simulation, the Destination changes on every trial, this makes it difficult to learn and build a QTable and find the optimized policy for a planned route of multiple actions, the future rewards no longer valid after the destination has changed, what the current trial learned will become obsolete in the next trial, the QTable will need to be rebuild for each new destination.<br/></p>
 <p><br/></p>
 
 </div>

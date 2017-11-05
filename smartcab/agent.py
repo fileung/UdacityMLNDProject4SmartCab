@@ -171,21 +171,28 @@ class LearningAgent(Agent):
                 action = random.choice(self.valid_actions)
             else: #select action by maxQ
                 maxQ = self.get_maxQ(self.state)
-                maxQ_actions = self.get_actions_index_by_maxQ_value(state, maxQ)
-                action = random.choice(maxQ_actions)
+                
+                # my original code
+                # maxQ_actions = self.get_actions_index_by_maxQ_value(state, maxQ)
+                # action = random.choice(maxQ_actions)
+
+                # reviewer code suggestion
+                best_actions = [action for action in self.valid_actions if self.Q[state][action] == max(self.Q[state].values())]
+                action = random.choice(best_actions)
                 
         return action
     
+    # reviewer newer code used, this function is no longer needed
     # Question 6. Implement a Q-Learning Driving Agent
-    def get_actions_index_by_maxQ_value(self, state, maxQ_value):
-        # get Q Table key by Q value, then map to actions array
-        # return the action(s) matches the maxQ value
-        maxQ_actions = []
-        for next_action, next_Q in self.Q[state].iteritems():
-            if(next_Q == maxQ_value):
-                maxQ_actions.append(next_action)
-                
-        return maxQ_actions
+#    def get_actions_index_by_maxQ_value(self, state, maxQ_value):
+#        # get Q Table key by Q value, then map to actions array
+#        # return the action(s) matches the maxQ value
+#        maxQ_actions = []
+#        for next_action, next_Q in self.Q[state].iteritems():
+#            if(next_Q == maxQ_value):
+#                maxQ_actions.append(next_action)
+#                
+#        return maxQ_actions
 
 
     def learn(self, state, action, reward):
